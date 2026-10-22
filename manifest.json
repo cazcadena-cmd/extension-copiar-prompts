@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Copiador de Prompts AI",
+  "version": "1.0",
+  "description": "Copia prompts de sitios web para usarlos con IA",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "clipboardWrite"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
