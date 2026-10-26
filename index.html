@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="no-referrer" />
   <meta name="theme-color" content="#090d13" />
   <meta
     name="description"
@@ -259,6 +260,41 @@
       font-weight: 700;
     }
 
+    /* Pointillism Video Backgrounds */
+    .pointillism-bg-wrap {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .pointillism-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.42;
+      filter: contrast(1.18) saturate(1.15);
+      -webkit-mask-image: radial-gradient(circle, #000000 1.65px, transparent 2.15px);
+      -webkit-mask-size: 6px 6px;
+      mask-image: radial-gradient(circle, #000000 1.65px, transparent 2.15px);
+      mask-size: 6px 6px;
+    }
+    .pointillism-fade-initial {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(9, 13, 19, 0.42) 0%, rgba(9, 13, 19, 0.28) 55%, #090d13 100%);
+      pointer-events: none;
+    }
+    .final-part-wrap {
+      position: relative;
+    }
+    .pointillism-fade-final {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, #090d13 0%, rgba(9, 13, 19, 0.32) 18%, rgba(9, 13, 19, 0.38) 82%, rgba(7, 10, 15, 0.88) 100%);
+      pointer-events: none;
+    }
+
     /* Hero Section */
     .hero-section {
       position: relative;
@@ -458,10 +494,13 @@
       position: relative;
       border-radius: 20px;
       overflow: hidden;
+      min-height: 455px;
       aspect-ratio: 16 / 11;
       background: #0b111a;
     }
     .showcase-main-img {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -469,12 +508,16 @@
     .showcase-overlay-bottom {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(7, 11, 17, 0.92) 0%, rgba(7, 11, 17, 0.2) 55%, transparent 100%);
+      pointer-events: none;
+      background:
+        linear-gradient(to top, rgba(7, 11, 17, 0.92) 0%, rgba(7, 11, 17, 0.2) 55%, transparent 100%),
+        linear-gradient(to right, rgba(7, 11, 17, 0.6) 0%, transparent 65%);
     }
     .showcase-top-badge {
       position: absolute;
-      top: 1rem;
-      left: 1rem;
+      top: 0.9rem;
+      left: 0.9rem;
+      z-index: 20;
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
@@ -484,11 +527,28 @@
       backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.15);
     }
+    .showcase-left-popups {
+      position: absolute;
+      top: 64px;
+      left: 0.9rem;
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      width: 256px;
+      max-width: calc(100% - 1.8rem);
+    }
+    @media (min-width: 640px) {
+      .showcase-left-popups {
+        width: 274px;
+      }
+    }
     .showcase-bottom-bar {
       position: absolute;
-      bottom: 1rem;
-      left: 1rem;
-      right: 1rem;
+      bottom: 0.9rem;
+      left: 0.9rem;
+      right: 0.9rem;
+      z-index: 20;
       display: flex;
       flex-wrap: wrap;
       align-items: flex-end;
@@ -497,51 +557,29 @@
     }
 
     .floating-sat {
-      display: none;
+      display: flex;
       align-items: center;
-      gap: 0.75rem;
-      padding: 0.625rem 1rem 0.625rem 0.625rem;
-      border-radius: 18px;
-      background: rgba(13, 22, 35, 0.93);
+      gap: 0.65rem;
+      padding: 0.5rem 0.85rem 0.5rem 0.5rem;
+      border-radius: 16px;
+      background: rgba(13, 22, 35, 0.92);
       backdrop-filter: blur(16px);
       border: 1px solid rgba(124, 196, 232, 0.38);
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.65);
-      position: absolute;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.65);
       text-align: left;
-      z-index: 15;
+      width: 100%;
       transition: border-color 0.2s ease;
     }
     .floating-sat:hover {
-      border-color: rgba(124, 196, 232, 0.75);
+      border-color: rgba(124, 196, 232, 0.78);
     }
     .floating-sat img {
-      width: 46px;
-      height: 46px;
-      border-radius: 12px;
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      border-radius: 11px;
       object-fit: cover;
       border: 1px solid rgba(124, 196, 232, 0.45);
-    }
-    @media (min-width: 640px) {
-      .sat-1 {
-        display: flex;
-        top: -0.5rem;
-        right: 1rem;
-      }
-    }
-    @media (min-width: 768px) {
-      .sat-2 {
-        display: flex;
-        bottom: -0.75rem;
-        left: -0.75rem;
-      }
-    }
-    @media (min-width: 1280px) {
-      .sat-3 {
-        display: flex;
-        top: 50%;
-        left: -1.5rem;
-        transform: translateY(-50%);
-      }
     }
 
     /* Section 2: ScrollTrigger Frame Sequence */
@@ -1064,14 +1102,14 @@
       transition: max-width 0.3s ease, border-radius 0.3s ease;
     }
     .device-shell.mode-mobile {
-      max-width: 430px;
-      border-radius: 36px;
-      border: 7px solid #1a2636;
+      max-width: 390px;
+      border-radius: 34px;
+      border: 6px solid #1a2636;
       outline: 1px solid rgba(124, 196, 232, 0.35);
     }
     .device-shell.mode-tablet {
-      max-width: 840px;
-      border-radius: 28px;
+      max-width: 800px;
+      border-radius: 26px;
       border: 5px solid #1a2636;
       outline: 1px solid rgba(71, 133, 167, 0.35);
     }
@@ -1081,14 +1119,13 @@
       border: 1px solid rgba(255, 255, 255, 0.15);
     }
     .device-shell.mode-immersive {
-      max-width: none;
-      height: 100%;
+      max-width: 1152px;
       border-radius: 16px;
       border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
     .phone-status-bar {
-      height: 28px;
+      height: 24px;
       background: #0b1017;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       display: flex;
@@ -1100,7 +1137,7 @@
       color: var(--bikar-muted);
     }
     .phone-speaker {
-      width: 64px;
+      width: 56px;
       height: 6px;
       border-radius: 9999px;
       background: #334155;
@@ -1125,41 +1162,44 @@
       display: block;
       border: 0;
       background: #121212;
-      height: 780px;
+      height: 500px;
     }
     .device-shell.mode-tablet #bikar-embedded-iframe,
     .device-shell.mode-wide #bikar-embedded-iframe {
-      height: 820px;
+      height: 520px;
     }
     .device-shell.mode-immersive #bikar-embedded-iframe {
-      height: calc(100vh - 115px);
+      height: calc(100dvh - 145px);
+      max-height: 600px;
     }
 
     .guide-panel {
       border-radius: 26px;
       background: rgba(11, 17, 26, 0.95);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 1.5rem;
+      padding: 1.25rem;
     }
     .guide-step {
-      padding: 0.75rem;
+      padding: 0.6rem;
       border-radius: 16px;
       background: rgba(16, 25, 38, 0.9);
       border: 1px solid rgba(255, 255, 255, 0.06);
       display: flex;
       align-items: center;
-      gap: 0.875rem;
-      margin-bottom: 0.75rem;
+      gap: 0.75rem;
+      margin-bottom: 0.6rem;
     }
     .guide-step .photo-badge {
-      width: 56px;
-      height: 56px;
+      width: 48px;
+      height: 48px;
     }
 
     /* Footer */
     .site-footer {
+      position: relative;
+      z-index: 10;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
-      background: #070a0f;
+      background: rgba(7, 10, 15, 0.92);
       padding: 3rem 0;
     }
     .footer-inner {
@@ -1220,6 +1260,18 @@
   <main>
     <!-- HERO SECTION -->
     <section id="inicio" class="hero-section">
+      <div class="pointillism-bg-wrap">
+        <video
+          src="https://i.imgur.com/CuSh8t9.mp4"
+          autoplay
+          loop
+          muted
+          playsinline
+          class="pointillism-video"
+        ></video>
+        <div class="pointillism-fade-initial"></div>
+      </div>
+
       <div class="ambient-glow-1"></div>
       <div class="ambient-glow-2"></div>
 
@@ -1291,11 +1343,14 @@
           <div class="showcase-wrapper">
             <div class="bikar-glass showcase-frame">
               <div class="showcase-viewport">
-                <img
-                  src="https://images.pexels.com/photos/16551633/pexels-photo-16551633.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
-                  alt="Unidad ejecutiva blanca BIKAR en avenida urbana nocturna"
+                <video
+                  src="https://i.imgur.com/o4y7e1j.mp4"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
                   class="showcase-main-img hero-main-photo"
-                />
+                ></video>
                 <div class="showcase-overlay-bottom"></div>
 
                 <div class="showcase-top-badge">
@@ -1306,6 +1361,36 @@
                   />
                   <span style="font-size:0.75rem;font-weight:600;color:#fff">Flota Verificada BIKAR</span>
                   <span class="dot-emerald"></span>
+                </div>
+
+                <!-- Left-Aligned Organized Column of Popups -->
+                <div class="showcase-left-popups">
+                  <button type="button" class="floating-sat hero-left-popup sat-1" data-scroll="#experiencia-ruta">
+                    <img src="https://images.pexels.com/photos/16702626/pexels-photo-16702626.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Conductores Verificados" />
+                    <div style="min-width:0">
+                      <div style="display:flex;align-items:center;gap:6px">
+                        <span class="dot-emerald"></span>
+                        <span style="font-size:0.75rem;font-weight:700;color:#fff">Conductores Verificados</span>
+                      </div>
+                      <p style="font-size:11px;color:#cbd5e1;margin-top:2px">Documentación y perfil validados</p>
+                    </div>
+                  </button>
+
+                  <button type="button" class="floating-sat hero-left-popup sat-3" data-scroll="#acceso-bikar">
+                    <img src="https://images.pexels.com/photos/3771134/pexels-photo-3771134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Acceso Protegido" />
+                    <div style="min-width:0">
+                      <span style="font-size:0.75rem;font-weight:700;color:#fff;display:block">Acceso Protegido</span>
+                      <span style="font-size:11px;color:#7cc4e8;display:block;margin-top:2px">Validación con Selfie y DNI</span>
+                    </div>
+                  </button>
+
+                  <button type="button" class="floating-sat hero-left-popup sat-2" data-scroll="#servicios-bikar">
+                    <img src="https://images.pexels.com/photos/12935053/pexels-photo-12935053.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Comercios Aliados" />
+                    <div style="min-width:0">
+                      <span style="font-size:0.75rem;font-weight:700;color:#fff;display:block">Comercios Aliados</span>
+                      <p style="font-size:11px;color:#cbd5e1;margin-top:2px">Registra tu local y gestiona envíos</p>
+                    </div>
+                  </button>
                 </div>
 
                 <div class="showcase-bottom-bar">
@@ -1323,34 +1408,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- Satellite Real-Photo Cards -->
-            <button type="button" class="floating-sat sat-1" data-scroll="#experiencia-ruta">
-              <img src="https://images.pexels.com/photos/16702626/pexels-photo-16702626.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Conductores Verificados" />
-              <div>
-                <div style="display:flex;align-items:center;gap:6px">
-                  <span class="dot-emerald"></span>
-                  <span style="font-size:0.75rem;font-weight:700;color:#fff">Conductores Verificados</span>
-                </div>
-                <p style="font-size:11px;color:#cbd5e1;margin-top:2px">Documentación y perfil validados</p>
-              </div>
-            </button>
-
-            <button type="button" class="floating-sat sat-2" data-scroll="#servicios-bikar">
-              <img src="https://images.pexels.com/photos/12935053/pexels-photo-12935053.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Comercios Aliados" />
-              <div>
-                <span style="font-size:0.75rem;font-weight:700;color:#fff;display:block">Comercios Aliados</span>
-                <p style="font-size:11px;color:#cbd5e1;margin-top:2px">Registra tu local y gestiona envíos</p>
-              </div>
-            </button>
-
-            <button type="button" class="floating-sat sat-3" data-scroll="#acceso-bikar">
-              <img src="https://images.pexels.com/photos/3771134/pexels-photo-3771134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Acceso Protegido" />
-              <div>
-                <span style="font-size:11px;font-weight:700;color:#fff;display:block">Acceso Protegido</span>
-                <span style="font-size:10px;color:#7cc4e8">Validación con Selfie y DNI</span>
-              </div>
-            </button>
           </div>
         </div>
       </div>
@@ -1494,8 +1551,21 @@
     </section>
 
     <!-- SECTION 4: INTEGRATED BIKAR APP PORTAL -->
-    <section id="acceso-bikar" class="portal-section">
-      <div class="container-7xl">
+    <div class="final-part-wrap">
+      <div class="pointillism-bg-wrap">
+        <video
+          src="https://i.imgur.com/GQ6l9vl.mp4"
+          autoplay
+          loop
+          muted
+          playsinline
+          class="pointillism-video"
+        ></video>
+        <div class="pointillism-fade-final"></div>
+      </div>
+
+      <section id="acceso-bikar" class="portal-section" style="position:relative;z-index:10">
+        <div class="container-7xl">
         <div style="max-width:48rem;margin-bottom:2rem">
           <span class="portal-reveal section-eyebrow">Plataforma Oficial en Línea</span>
           <h2 class="portal-reveal" style="font-size:clamp(1.85rem,3.5vw,2.5rem);font-weight:700;color:#fff">
@@ -1641,7 +1711,8 @@
           </div>
         </div>
       </div>
-    </section>
+      </section>
+    </div>
   </main>
 
   <!-- CORPORATE FOOTER -->
@@ -1696,7 +1767,7 @@
           subtitle: 'Pide tu unidad desde cualquier punto de la ciudad con geolocalización precisa y atención inmediata las 24 horas.',
           badgeText: 'Pasajeros',
           statusLabel: 'Ubicación confirmada',
-          photoUrl: 'https://images.pexels.com/photos/7405/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+          photoUrl: 'https://i.imgur.com/j4WWIAW.jpeg',
           startFrame: 1,
           endFrame: 36,
           targetProgress: 0.06
@@ -1708,7 +1779,7 @@
           subtitle: 'Tu conductor asignado recibe la alerta al instante con ruta optimizada, documentación al día y estándares ejecutivos.',
           badgeText: 'Conductores',
           statusLabel: 'Unidad en camino',
-          photoUrl: 'https://images.pexels.com/photos/10731974/pexels-photo-10731974.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+          photoUrl: 'https://i.imgur.com/xbf72Hg.jpeg',
           startFrame: 37,
           endFrame: 72,
           targetProgress: 0.28
@@ -1720,7 +1791,7 @@
           subtitle: 'Restaurantes, tiendas y negocios locales gestionan sus pedidos y conectan con unidades cercanas sin demoras.',
           badgeText: 'Comercios',
           statusLabel: 'Aliado activo',
-          photoUrl: 'https://images.pexels.com/photos/12935053/pexels-photo-12935053.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+          photoUrl: 'https://i.imgur.com/c621aRJ.jpeg',
           startFrame: 73,
           endFrame: 108,
           targetProgress: 0.5
@@ -2095,6 +2166,7 @@
       FRAME_CHAPTERS.forEach(function (ch) {
         var img = new Image();
         img.crossOrigin = 'anonymous';
+        img.referrerPolicy = 'no-referrer';
         img.src = ch.photoUrl;
         img.onload = function () {
           renderSequenceFrame(currentFrameIdx);
@@ -2372,19 +2444,24 @@
           { y: 0, opacity: 1, duration: 0.78, stagger: 0.1, ease: 'power3.out' }
         );
 
-        // Hero Main Photo Subtle Zoom
+        // Hero Main Video Subtle Zoom
         gsap.to('.hero-main-photo', {
-          scale: 1.06,
+          scale: 1.05,
           duration: 9,
           repeat: -1,
           yoyo: true,
           ease: 'sine.inOut'
         });
 
-        // Floating Real-Photo Satellite Cards
-        gsap.to('.sat-1', { y: -8, duration: 2.8, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-        gsap.to('.sat-2', { y: 8, duration: 3.2, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-        gsap.to('.sat-3', { y: -6, duration: 2.5, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+        // Organized Left Column Popups Entrance & Gentle Wave Motion
+        gsap.fromTo(
+          '.hero-left-popup',
+          { x: -20, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.65, stagger: 0.14, delay: 0.25, ease: 'power3.out' }
+        );
+        gsap.to('.sat-1', { x: 5, y: -2, duration: 2.6, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+        gsap.to('.sat-3', { x: 5, y: -2, duration: 2.9, delay: 0.35, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+        gsap.to('.sat-2', { x: 5, y: -2, duration: 3.2, delay: 0.7, repeat: -1, yoyo: true, ease: 'sine.inOut' });
 
         if (window.ScrollTrigger) {
           // Top Global Progress Bar
