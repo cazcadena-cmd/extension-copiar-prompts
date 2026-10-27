@@ -1313,6 +1313,11 @@
     .portal-workspace {
       border-radius: 22px;
       padding: 0.65rem;
+      background: transparent !important;
+      border: 0 !important;
+      box-shadow: none !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
     }
     @media (min-width: 640px) {
       .portal-workspace {
@@ -1325,8 +1330,9 @@
       inset: 0;
       z-index: 50;
       border-radius: 0;
-      background: rgba(7, 11, 17, 0.98);
-      backdrop-filter: blur(18px);
+      background: transparent !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
       display: flex;
       flex-direction: column;
       padding: 0.75rem;
@@ -1425,8 +1431,8 @@
       position: relative;
       width: 100%;
       overflow: hidden;
-      background: #121212;
-      box-shadow: 0 24px 65px rgba(0, 0, 0, 0.75);
+      background: transparent;
+      box-shadow: none;
     }
     .device-shell.mode-mobile {
       max-width: 390px;
@@ -1494,7 +1500,7 @@
       width: 100%;
       display: block;
       border: 0;
-      background: #121212;
+      background: transparent;
       height: 450px;
     }
     @media (min-width: 640px) {
@@ -1941,7 +1947,7 @@
           </p>
         </div>
 
-        <div id="portal-workspace" class="portal-reveal bikar-glass portal-workspace">
+        <div id="portal-workspace" class="portal-reveal portal-workspace">
           <!-- Top Executive Toolbar -->
           <div class="portal-toolbar">
             <div style="display:flex;flex-wrap:wrap;align-items:center;gap:0.5rem">
