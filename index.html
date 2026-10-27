@@ -182,11 +182,23 @@
     }
     .final-part-wrap {
       position: relative;
+      overflow: hidden;
+    }
+    .final-video-band {
+      top: 50%;
+      bottom: auto;
+      height: 66%;
+      transform: translateY(-50%);
+    }
+    @media (min-width: 640px) {
+      .final-video-band {
+        height: 68%;
+      }
     }
     .pointillism-fade-final {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, #090d13 0%, rgba(9, 13, 19, 0.28) 16%, rgba(9, 13, 19, 0.34) 80%, rgba(9, 13, 19, 0.52) 100%);
+      background: linear-gradient(180deg, #090d13 0%, rgba(9, 13, 19, 0.2) 22%, rgba(9, 13, 19, 0.2) 78%, #090d13 100%);
       pointer-events: none;
     }
 
@@ -753,9 +765,12 @@
       }
       .seq-left {
         grid-column: span 7 / span 7;
+        min-width: 0;
       }
       .seq-right {
         grid-column: span 5 / span 5;
+        min-width: 0;
+        overflow: hidden;
       }
     }
 
@@ -934,6 +949,7 @@
       grid-template-columns: 1fr;
       gap: 0.375rem;
       flex: 1;
+      min-width: 0;
       align-content: center;
     }
     @media (min-width: 640px) and (max-width: 1023px) {
@@ -949,6 +965,9 @@
     }
     .chapter-btn {
       width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      overflow: hidden;
       text-align: left;
       border-radius: 12px;
       padding: 0.4rem 0.55rem;
@@ -958,6 +977,11 @@
       align-items: center;
       gap: 0.6rem;
       transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .chapter-btn > div {
+      min-width: 0;
+      max-width: 100%;
+      overflow: hidden;
     }
     @media (min-width: 640px) {
       .chapter-btn {
@@ -1889,9 +1913,9 @@
     </section>
   </main>
 
-  <!-- FINAL PART + SEMI-TRANSPARENT FOOTER OVER POINTILLISM VIDEO BACKGROUND -->
+  <!-- FINAL PART WITH CENTERED POINTILLISM VIDEO BACKGROUND -->
   <div class="final-part-wrap">
-    <div class="pointillism-bg-wrap">
+    <div class="pointillism-bg-wrap final-video-band">
       <video
         src="https://i.imgur.com/GQ6l9vl.mp4"
         loop
@@ -2054,10 +2078,11 @@
         </div>
       </div>
     </section>
+  </div>
 
-    <!-- SEMI-TRANSPARENT CORPORATE FOOTER -->
-    <footer class="site-footer">
-      <div class="container-7xl footer-inner">
+  <!-- SEMI-TRANSPARENT CORPORATE FOOTER -->
+  <footer class="site-footer">
+    <div class="container-7xl footer-inner">
         <div style="display:flex;align-items:center;gap:0.75rem">
           <div class="logo-wrap">
             <img
@@ -2084,8 +2109,7 @@
           </button>
         </div>
       </div>
-    </footer>
-  </div>
+  </footer>
 
   <!-- GSAP + ScrollTrigger + ScrollToPlugin -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
